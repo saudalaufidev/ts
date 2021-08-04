@@ -1,6 +1,7 @@
 import faker from 'faker';
+import {Mappable} from './CustomMap'
 
-export class Org{
+export class Org implements Mappable{
     name: string;
     location:{
         lat:number;
@@ -12,5 +13,10 @@ export class Org{
             lat:parseFloat(faker.address.latitude()),
             lng:parseFloat(faker.address.longitude())
         }
+    }
+    markerInfo():string {
+        return `<h1>Org : ${this.name}</h1>
+        <h2>Lat : ${this.location.lat} 
+        Lng : ${this.location.lng}</h2>`
     }
 }
